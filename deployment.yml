@@ -11,3 +11,13 @@ jobs:
     steps:
       - name: run models
         command: dbt run
+  - name: process-dim
+    schedule: 0 12 * * * 
+    steps:
+      - name: run dim models
+        command: dbt run --models dim*
+  - name: process-fact
+    schedule: 0 12 * * * 
+    steps:
+      - name: run fact models
+        command: dbt run --models fct*
